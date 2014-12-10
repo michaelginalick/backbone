@@ -21,7 +21,7 @@ var Car = Vehicle.extend({
 
 	start: function(){
 		//Vehicle.prototype.start.apply(this);
-		console.log("Car with registration number:" + this.model.get('registrationNumber'));
+		console.log("Car with registration number:" + this.get('registrationNumber'));
 	}
 });
 

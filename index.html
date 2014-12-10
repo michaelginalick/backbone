@@ -15,10 +15,17 @@
     </head>
     <body>
         <ul id= "songs"></ul>
+
         <div id = "container"></div>
         <script src="js/lib/jquery-min.js"></script>
         <script src="js/lib/underscore-min.js"></script>
         <script src="js/lib/backbone-min.js"></script>
-        <script src="js/main.js"></script>
+        <script id = "vehicleTemplate" type="text/html">
+             <%= registrationNumber %>
+            <button>Delete</button>
+                <span data-color= "green"></span>
+            
+        </script>
+        <script src="js/main_section_5_quiz.js"></script>
     </body>
 </html>

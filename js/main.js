@@ -1,7 +1,19 @@
 
-var Song = Backbone.Model.extend();
+var Song = Backbone.Model.extend({
+	defaults: {
+		listeners: 0
+	}
+});
 
 var SongView = Backbone.View.extend({
+	initialize: function(){
+								//this.onModelChange
+		this.model.on("change", this.render, this);
+	},
+
+	onModelChange: function(){
+		this.$el.addClass("somClass");
+	},
 
 	events: {
 		"click": "onClick",
@@ -18,7 +30,7 @@ var SongView = Backbone.View.extend({
 	},
 
 	render: function(){
-		this.$el.html(this.model.get('title') + " <button>Listen</button> <button class = 'bookmark'>Bookmark</button>");
+		this.$el.html(this.model.get('title') + " - Listeners: " + this.model.get('listeners'));
 
 		return this;
 	}
