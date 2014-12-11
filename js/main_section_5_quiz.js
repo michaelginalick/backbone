@@ -5,22 +5,22 @@ var Vehicles = Backbone.Collection.extend({
 });
 
 var vehicleView = Backbone.View.extend({
-	tagName: "li",
+
+	initialize: function(){
+								//this.onModelChange
+		this.model.on("change", this.render, this);
+	},
+
 	className: "vehicle",
+	tagName: "li",
 
 	render: function(){
 
-		
 		var template = _.template($("#vehicleTemplate").html());
 		var html = template(this.model.toJSON());
 		this.$el.html(html);
 
-		// this.$el.attr("id", this.model.id);
-		//this.$el.html(this.model.get("registrationNumber"));
-		//this.$el.attr("id", this.model.id);
-
-		//return this;
-
+		this.$el.attr("id", this.model.id);
 		return this;
 	}
 
@@ -32,14 +32,19 @@ var VehiclesView = Backbone.View.extend({
 	tagName: "ul",
 
 	initialize: function(){
-		this.model.on("remove", this.onVehicleRemove, this);
+		this.model.on("remove", this.removeCar, this);
 
 	},
 
-	onVehicleRemove: function(){
+	events: {
+		"click #button": "removeCar"
+	},
+
+	removeCar: function(car){
 		//this.$("li#" + car.id).remove();
+		//this.$el.find("li#" + car.id).remove();
 		console.log("I am here");
-	}, 
+	},
 
 	render: function(){
 

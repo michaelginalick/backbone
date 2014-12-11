@@ -12,7 +12,7 @@ var SongView = Backbone.View.extend({
 	},
 
 	onModelChange: function(){
-		this.$el.addClass("somClass");
+		this.$el.addClass("someClass");
 	},
 
 	events: {
