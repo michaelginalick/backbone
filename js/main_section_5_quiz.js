@@ -9,10 +9,13 @@ var vehicleView = Backbone.View.extend({
 	initialize: function(){
 								//this.onModelChange
 		this.model.on("change", this.render, this);
+		//console.log(this.model.on("change", this.render, this));
 	},
 
 	className: "vehicle",
 	tagName: "li",
+
+
 
 	render: function(){
 
@@ -36,14 +39,18 @@ var VehiclesView = Backbone.View.extend({
 
 	},
 
+
+
 	events: {
 		"click #button": "removeCar"
 	},
 
-	removeCar: function(car){
+	removeCar: function(e){
 		//this.$("li#" + car.id).remove();
 		//this.$el.find("li#" + car.id).remove();
-		console.log("I am here");
+		var liElement = this.$(e.currentTarget).parent('li');
+		liElement.remove();
+		//console.log("I am here");
 	},
 
 	render: function(){
@@ -65,5 +72,5 @@ var cars = new Vehicles([
 
 ]);
 
-var carsView = new VehiclesView({ el: "#songs", model: cars});
+var carsView = new VehiclesView({ el: "#carsList", model: cars});
 carsView.render();
