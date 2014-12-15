@@ -9,7 +9,6 @@ var vehicleView = Backbone.View.extend({
 	initialize: function(){
 								//this.onModelChange
 		this.model.on("change", this.render, this);
-		//console.log(this.model.on("change", this.render, this));
 	},
 
 	className: "vehicle",
@@ -23,7 +22,7 @@ var vehicleView = Backbone.View.extend({
 		var html = template(this.model.toJSON());
 		this.$el.html(html);
 
-		this.$el.attr("id", this.model.id);
+		//this.$el.attr("id", this.model.id);
 		return this;
 	}
 
@@ -50,7 +49,7 @@ var VehiclesView = Backbone.View.extend({
 		//this.$el.find("li#" + car.id).remove();
 		var liElement = this.$(e.currentTarget).parent('li');
 		liElement.remove();
-		//console.log("I am here");
+		
 	},
 
 	render: function(){
